@@ -7,11 +7,11 @@ The research reported in the article „Climate protests increase concerns about
 The results reported in the article and the supplementary material can be replicated using the raw data provided by DIW Berlin, once a data access agreement has been signed. The article used v37 of the data, DOI: 10.5684/soep.core.v37eu.
 The replication package also contains data which is merged to the SOEP. The folder “data” contains the following files: 
 -	protest_database.xlsx contains information to the salient protests selected for analysis (e.g., a link to the Tagesschau or ZDFheute archive)
--	protests_germany.xlsx/protests_germany.dta contains the protest data in a simple format that is merged with the SOEP
+-	protests_germany.dta contains the protest data in a simple format that is merged with the SOEP
 -	r_input_fig1b.dta contains the data needed to replicate Fig. 1b in R
--	election_cop.xlsx/election_cop.dta contains the dates for the control variables for federal election dates as well as UN COPs
+-	election_cop.dta contains the dates for the control variables for federal election dates as well as UN COPs
 -	google_trends_fff_eg_xr.dta contains the weekly Google Trends from 2006 to 2020 needed to replicate parts of Fig. 1b
--	weekday.xlsx/weekday.dta contains for each date the corresponding weekday needed for the weekday fixed effect
+-	weekday.dta contains for each date the corresponding weekday needed for the weekday fixed effect
 -	XR.docx, FfF.docx and EG.docx contain all the newspaper headings from Factiva needed to replicate Supplementary Fig. 1
 -	The folder weather contains all the weather data used in the analysis
   
