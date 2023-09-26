@@ -5,9 +5,9 @@
 *	PURPOSE: 	Master do-files												   *
 *					   										                   *
 *											 					               *
-*   OUTLINE:  	PART 1:  Set user and paths for analysis					   *
+*   OUTLINE:  	PART 1: Set user and paths for analysis					 	   *
 *		   		PART 2: Run analyses		                                   *
-*																			   *									
+*																			  *									
 *******************************************************************************/
 
 

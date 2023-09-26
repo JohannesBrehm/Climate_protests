@@ -16,7 +16,7 @@
 ***Set globals
 	
 	*Controls 
-	global X i.sex sex_missing size_hh size_hh_missing education education_missing i.status_employment  status_employment_missing teen_14_18_hh i.teen_14_18_hh_missing i.industry_employment industry_missing labour_income labour_income_missing i.strong_interest_politics strong_interest_politics_missing i.cat_pol_orient cat_pol_orient_missing
+	global X i.sex sex_missing size_hh size_hh_missing education education_missing age age_missing i.status_employment  status_employment_missing teen_14_18_hh i.teen_14_18_hh_missing i.industry_employment industry_missing labour_income labour_income_missing i.strong_interest_politics strong_interest_politics_missing i.cat_pol_orient cat_pol_orient_missing
 	
 	*Weather 
 	global weather hist_mean_prec_deviation hist_mean_prec_deviation_qu hist_mean_temp_deviation hist_mean_temp_deviation_qu 

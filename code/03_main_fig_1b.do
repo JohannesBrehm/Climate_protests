@@ -9,9 +9,6 @@
 *** Standard settings go here
 	clear all
 	set more off
-	
-*** Load data
-	use "${datadir}\protests_germany\working_data_complete.dta", clear 
 
 ****************************************************************************************
 *	Fig. 1b – Climate change concerns in Germany and Google Trends of protest movements*
