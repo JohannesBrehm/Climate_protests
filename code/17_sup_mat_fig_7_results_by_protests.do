@@ -117,41 +117,63 @@
 	reghdfe agg_climate_concern post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17 ///
 	$X $weather i.election_cop $interview_X  [aw=_webal], a(i.event_id i.l11101 i.year i.month i.weekday_numeric)  cluster(i.event_id) 
 	eststo tab5
+	
 	reghdfe agg_climate_concern post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17 ///
 	$X $weather i.election_cop $interview_X [aw=_webal], a($delta i.event_id i.l11101 i.year i.month i.weekday_numeric)  cluster(i.event_id) 
 	eststo tab6
 	
-	
-*** Generate coefplots without y-axis
-	foreach i in  2 3 4 5  7 8 9 10  12  13 14 15  17   {	  
-			coefplot ///
-		  (tab1), bylabel(" ")  || ///
-		  (tab2), bylabel(" ")  || ///
-		  (tab3), bylabel(" ")  || ///
-		  (tab4), bylabel(" ")  || ///
-		  (tab5), bylabel(" ")  || ///
-		  (tab6), bylabel(" ")  || ///
-          , keep(post_`i') xline(0, lc(cranberry))  grid(none) ///
-          bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(4) bgcol(white))  xlabel(-0.2(0.1)0.2) xscale(range(-0.2(0.1)0.2)) title("Protest `i'", size(medium)) // adjust how many rows appear // "compact" is also potentially interesting option
-		graph save balance`i', replace  
-	}
-			  
+
+// Sample sizes for each protest ID
+local sample_sizes "2,751 813 190 388 386 5,579 2,305 1,542 658 380 234 2,688 3,790 663 643 858 698"
+
+// Loop for each protest ID
+foreach i in 2 3 4 5 7 8 9 10 12 13 14 15 17 {  
+    // Extract the sample size for the current protest ID
+    local current_size : word `i' of `sample_sizes'
+    
+    // Individual loop for each protest ID with the corresponding sample size
+    local title "Protest `i' (N=`current_size')"
+    
+    coefplot ///
+        (tab1), bylabel(" ")  || ///
+        (tab2), bylabel(" ")  || ///
+        (tab3), bylabel(" ")  || ///
+        (tab4), bylabel(" ")  || ///
+        (tab5), bylabel(" ")  || ///
+        (tab6), bylabel(" ")  || ///
+        , keep(post_`i') xline(0, lc(cranberry)) grid(none) ///
+        bycoefs horizontal subtitle(, bcolor(white)) scheme(lean2) color(navy) ///
+        ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
+        byopts(graphregion(col(white)) rows(4) bgcol(white)) ///
+        xlabel(-0.2(0.1)0.2) xscale(range(-0.2(0.1)0.2)) ///
+        title("`title'", size(medium))
+    
+    // Save the graph with the appropriate filename
+    graph save balance`i', replace
+}
+
+
 *** Generate coefplots with y-axis
 		  
 	foreach i in 1 6 11 16{
-			coefplot ///
+    local current_size : word `i' of `sample_sizes'
+    
+    // Individual loop for each protest ID with the corresponding sample size
+    local title "Protest `i' (N=`current_size')"
+    
+    coefplot ///
 		  (tab1), bylabel("(1)")  || ///
 		  (tab2), bylabel("(2)")  || ///
 		  (tab3), bylabel("(3)")  || ///
 		  (tab4), bylabel("(4)")  || ///
 		  (tab5), bylabel("(5)")  || ///
 		  (tab6), bylabel("(6)")  || ///
-          , keep(post_`i') xline(0, lc(cranberry))  grid(none) ///
- bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(4) bgcol(white))  xlabel(-0.2(0.1)0.2) xscale(range(-0.2(0.1)0.2)) title("Protest `i'", size(medium)) groups(?.tab1 ?.tab6 = "{bf:Main Effects}") 
-		  
-		graph save balance`i', replace  
+        , keep(post_`i') xline(0, lc(cranberry)) grid(none) ///
+		 bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
+		  byopts(graphregion(col(white)) rows(4) bgcol(white))  xlabel(-0.2(0.1)0.2) xscale(range(-0.2(0.1)0.2)) title("`title'", size(medium)) groups(?.tab1 ?.tab6 = "{bf:Main Effects}") 
+    
+    // Save the graph with the appropriate filename
+    graph save balance`i', replace
 	}
 			 
 *** Combine graphs	 

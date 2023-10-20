@@ -54,8 +54,41 @@
 	
 *** Output event study
 	eventstudy agg_climate_concern  $X  $weather i.election_cop $interview_X, a($delta i.event_id i.l11101 i.year i.month weekday) eventvariable(e_14d) window_lower(-4) window_upper(3) cluster(event_id) reference(-1)  
+	
 
 *** Export graph		  
 	graph save "${graphdir}/eventstudy_main_results", replace
 	graph export "${graphdir}/eventstudy_main_results.eps", as(eps) preview(off) replace
 	
+	
+	replace e_14d = e_14d + 4
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X $weather i.election_cop $interview_X  , a($delta i.event_id i.l11101 i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	
+*** Number of relevant observations by time window 
+	gen byte used=e(sample)
+	tab e_14d if used == 1
+	
+*** table 
+reghdfe agg_climate_concern ib3.e_14d#i.post_all $X  , a(i.event_id  i.year)  cluster(i.event_id) 
+	eststo tab1
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X  , a(i.event_id i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	eststo tab2
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X $weather i.election_cop  , a(i.event_id i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	eststo tab3
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X $weather i.election_cop $interview_X  , a(i.event_id  i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	eststo tab4
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X $weather i.election_cop $interview_X  , a(i.event_id i.l11101 i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	eststo tab5
+	reghdfe agg_climate_concern ib3.e_14d#i.post_all $X $weather i.election_cop $interview_X  , a($delta i.event_id i.l11101 i.year i.month i.weekday_numeric)  cluster(i.event_id) 
+	eststo tab6
+	
+	*** Output table
+	estout tab1 tab2 tab3 tab4 tab5 tab6 using  "${graphdir}\eventstudy.tex", ///
+                                style(tex) cells(b(star fmt(4)) se(par fmt(4))) posthead() ///
+                starlevels( * 0.1 ** 0.05 *** 0.01)   ///
+                stats(N, layout(@ @) labels("Number of observations"))  mlabels(none)   ///
+                collabels(none) eql(none) notype label postfoot( \addlinespace) replace        
+    eststo clear
+	
+
+	 

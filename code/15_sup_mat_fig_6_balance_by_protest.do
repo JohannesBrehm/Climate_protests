@@ -41,12 +41,18 @@
 	}
 	
 *** Balance by protest (in two waves to avoid y-axis labeling)
+	
 
 	tempfile temp
 	save `temp'
 
 *** Without y-axis labels
 	foreach i in  2 3 4 5  7 8 9 10  12  13 14 15  17   {
+	
+	// Individual loop for each protest ID with the corresponding sample size
+	local sample_sizes_bal "2,751	813	190	388	386	5,579 2,305	1,542 658 380	234	2,688	3,790	663	643	858	698"
+	local samplesize_bal : word `i' of `sample_sizes_bal'
+    local title "Protest `i' (N=`samplesize_bal')"
 	
 	use `temp', clear
 	
@@ -84,8 +90,7 @@
                    balance_9, bylabel(" ") || ///
           , keep(post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17) xline(0, lc(cranberry))  grid(none) ///
           bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0))  title("Protest `i'", size(medium)) // adjust how many rows appear // "compact" is also potentially interesting option
-		  	
+		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0))  title("`title'", size(medium))
 		graph save balance`i', replace
 		  
 	}
@@ -96,7 +101,10 @@
 *** Balance by protest with y-axis labels
 	foreach i in 1 6 11 16{
 	
-			
+	// Individual loop for each protest ID with the corresponding sample size
+	local samplesize_bal : word `i' of `sample_sizes_bal'
+    local title "Protest `i' (N=`samplesize_bal')"
+	
 	use `temp', clear
 	
 		keep if event_id == `i'
@@ -134,7 +142,7 @@
                    balance_9, bylabel("Pol Or") || ///
           , keep(post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17) xline(0, lc(cranberry))  grid(none) ///
           bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0)) title("Protest `i'", size(medium)) // adjust how many rows appear // "compact" is also potentially interesting option
+		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0)) title("`title'", size(medium)) 
 		  	
 		graph save balance`i', replace
 		  
@@ -146,7 +154,7 @@
 		gr combine balance1.gph balance2.gph balance3.gph balance4.gph balance5.gph balance6.gph balance7.gph balance8.gph balance9.gph balance10.gph balance11.gph balance12.gph balance13.gph balance14.gph balance15.gph balance16.gph balance17.gph,  graphregion(color(white))
 		
 *** Export graph
-	graph export "${graphdir}/balance_by_protest.eps", as(eps) preview(off) replace
+	*graph export "${graphdir}/balance_by_protest.eps", as(eps) preview(off) replace
 	
 	
 	
@@ -208,7 +216,15 @@
 	save `temp'
 	
 *** Run balancing table for protests without y-axis
+
+	*Global sample size by protest with ebalance
+	local sample_sizes "2,601 724 165 353 362 5,327 2,174 1,466 609 355 201 2,556 3,538 608 573 752 630"
+
 	foreach i in  2 3 4 5  7 8 9 10  12  13 14 15  17   {
+	
+	// Individual loop for each protest ID with the corresponding sample size
+	local samplesize_ebal : word `i' of `sample_sizes'
+    local title "Protest `i' (N=`samplesize_ebal')"
 
 	use `temp', clear
 	
@@ -248,7 +264,7 @@
                    balance_9, bylabel(" ") || ///
           , keep(post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17) xline(0, lc(cranberry))  grid(none) ///
           bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0)) title("Protest `i'", size(medium))
+		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0))  title("`title'", size(medium))
 		  	
 		graph save balance`i', replace  
 	}
@@ -259,6 +275,10 @@
 	use `temp', clear
 
 	foreach i in 1 6 11 16{
+	
+	// Individual loop for each protest ID with the corresponding sample size
+	local samplesize_ebal : word `i' of `sample_sizes'
+    local title "Protest `i' (N=`samplesize_ebal')"
 
 	use `temp', clear
 	
@@ -298,7 +318,7 @@
                    balance_9, bylabel("Pol Or") || ///
           , keep(post_1 post_2 post_3 post_4 post_5 post_6 post_7 post_8 post_9 post_10 post_11 post_12 post_13 post_14 post_15 post_16 post_17) xline(0, lc(cranberry))  grid(none) ///
           bycoefs horizontal subtitle(, bcolor(white))  scheme(lean2) color(navy) ciopts(lc(navy) recast(rcap) lwidth(thin) msize(small)) graphregion(color(white)) ///
-		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0)) title("Protest `i'", size(medium)) 
+		  byopts(graphregion(col(white)) rows(5) bgcol(white)) xlabel(-1.0(0.5)1.0) xscale(range(-1.0(0.5)1.0))  title("`title'", size(medium))
 		  	
 		graph save balance`i', replace	  
 	}

@@ -21,7 +21,7 @@
 *** Correlations in text
 
 *** Climate change concerns and news consumption
-	correlate agg_climate_concern  news_consumption
+	pwcorr agg_climate_concern  news_consumption, sig
 
 *** Correlation Political interest news consumption
 	gen interest_pol = . 
@@ -37,5 +37,5 @@
 	replace locus_control = 0 if plh0377_v2 <=4 & plh0377_v2!=.
 
 ** Correlation 
-	correlate interest_pol locus_control
+	pwcorr interest_pol locus_control, sig
 
