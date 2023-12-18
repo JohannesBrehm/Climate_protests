@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change 	*
 *********************************************************************************
 *											 					              	*
-*	PURPOSE: 	Generate estimates for Figure 2b							   	*
+*	PURPOSE: 	Generate estimates for Figure 3								   	*
 *				- Analysis by pre-protest concern level							*
 *																				*
 *******************************************************************************/

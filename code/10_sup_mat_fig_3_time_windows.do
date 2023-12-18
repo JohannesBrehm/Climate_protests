@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change *
 ********************************************************************************
 *											 					               *
-*	Supplementary Fig. 4 – Treatment effects for alternative time windows 	   * 
+*	Supplementary Fig. 3 – Treatment effects for alternative time windows 	   * 
 *					   										                   *
 *******************************************************************************/
 
@@ -31,7 +31,7 @@
 	global post_all post_all
 	
 ************************************************************************************
-*	Supplementary Fig. 4 – Treatment effects for alternative time windows 			* 
+*	Supplementary Fig. 3 – Treatment effects for alternative time windows 			* 
 ************************************************************************************
 
 *** A) Different time windows 

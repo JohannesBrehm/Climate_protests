@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change 	*
 *********************************************************************************
 *											 					              	*
-*	PURPOSE: 	Generate estimates for Table 2a								   	*
+*	PURPOSE: 	Generate estimates for Table 2								   	*
 *				- Linear Probability Model 										*
 *				- Linear Probability Model + Entropy Balancing   				*
 *				- Probit Model 									  				*
@@ -37,7 +37,7 @@
 	drop if agg_climate_concern== . 
 	
 ********************************************************************************
-*	 Fig. 2a  Main regression analysis			                          	   *
+*	 Fig. 2  Main regression analysis			                          	   *
 ********************************************************************************
 	
 *** Regressions

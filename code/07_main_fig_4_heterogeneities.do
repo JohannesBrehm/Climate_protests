@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change *
 ********************************************************************************
 *											 					               *
-*	PURPOSE: Fig. 2c: Heterogeneous treatment effects (LMP, Colum (6))		   *
+*	PURPOSE: Fig. 4: Heterogeneous treatment effects (LMP, Colum (6))		   *
 *																			   *					
 *******************************************************************************/
 
@@ -36,7 +36,7 @@
 	drop if agg_climate_concern== . 
 	
 ************************************************************************************
-*	Fig. 2c: Heterogeneous treatment effects (LMP, Colum (6))			   		   * 
+*	Fig. 4: Heterogeneous treatment effects (LMP, Colum (6))			   		   * 
 ************************************************************************************
 
 *** Heterogeneities

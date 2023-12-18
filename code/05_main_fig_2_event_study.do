@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change *
 ********************************************************************************
 *											 					               *
-*	PURPOSE: 	Supplementary Fig. 3 – Treatment effects over time.		  	   * 
+*	PURPOSE: 	Fig. 2 – Treatment effects over time.		  	   			   * 
 *					   										                   *
 *******************************************************************************/
 
@@ -31,7 +31,7 @@
 	drop if agg_climate_concern== . 
 
 ************************************************************************************
-*	Supplementary Fig. 3 – Treatment effects over time.					 			* 
+*	Supplementary Fig. 2 – Treatment effects over time.					 			* 
 ************************************************************************************
 	
 *** Define time window 

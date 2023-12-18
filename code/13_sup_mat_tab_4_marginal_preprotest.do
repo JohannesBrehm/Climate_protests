@@ -2,7 +2,7 @@
 *	Replication files: Climate protests increase concerns about climate change *
 ********************************************************************************
 *											 					               *
-*	PURPOSE: Supplementary Tab. 3 – Average marginal effects wrt pre-protest   *
+*	PURPOSE: Supplementary Tab. 4 – Average marginal effects wrt pre-protest   *
 *	population concern levels.					  							   *	
 *																			   *									
 *******************************************************************************/
@@ -36,7 +36,7 @@
 	drop if agg_climate_concern== . 
 
 *****************************************************************************************************************
-*	Supplementary Tab. 3 – Average marginal effects with respect to pre-protest population concern levels.		*		     
+*	Supplementary Tab. 4 – Average marginal effects with respect to pre-protest population concern levels.		*		     
 *****************************************************************************************************************	
 
 *** Analysis by pre-protest concern level
